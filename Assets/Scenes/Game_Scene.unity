@@ -544,30 +544,6 @@ PrefabInstance:
       propertyPath: playerScoreText
       value: 
       objectReference: {fileID: 1113916794}
-    - target: {fileID: 3968725338069942472, guid: 6326f474be9e687458fb40e592f8a74f, type: 3}
-      propertyPath: itemTags.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3968725338069942472, guid: 6326f474be9e687458fb40e592f8a74f, type: 3}
-      propertyPath: itemScores.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3968725338069942472, guid: 6326f474be9e687458fb40e592f8a74f, type: 3}
-      propertyPath: itemTags.Array.data[0]
-      value: Item1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3968725338069942472, guid: 6326f474be9e687458fb40e592f8a74f, type: 3}
-      propertyPath: itemTags.Array.data[1]
-      value: Item2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3968725338069942472, guid: 6326f474be9e687458fb40e592f8a74f, type: 3}
-      propertyPath: itemScores.Array.data[0]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3968725338069942472, guid: 6326f474be9e687458fb40e592f8a74f, type: 3}
-      propertyPath: itemScores.Array.data[1]
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4141132001172360958, guid: 6326f474be9e687458fb40e592f8a74f, type: 3}
       propertyPath: m_Name
       value: ScoreManager
@@ -664,10 +640,6 @@ PrefabInstance:
     - target: {fileID: 25728041553813453, guid: 11dd8aabe790f144aaa4bd9a7b2e4697, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1199311687504297657, guid: 11dd8aabe790f144aaa4bd9a7b2e4697, type: 3}
-      propertyPath: m_Interpolate
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2014768528101203923, guid: 11dd8aabe790f144aaa4bd9a7b2e4697, type: 3}
       propertyPath: m_Name

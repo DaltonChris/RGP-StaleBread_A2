@@ -13,20 +13,28 @@ public class AIController : MonoBehaviour
     public Transform basket; // Reference to the AI's basket
     public float stopDistance = 0.1f; // Distance threshold for the AI to stop moving when under an item
     public Collider2D platformArea; // Defines the AI's platform area
+    public float collectDelay = 2f; // Base delay time when AI decides to wait before collecting more items
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private Collider2D targetItem;
+    private bool isCollecting = false;
+    private int itemsCollected = 0;
+    private int itemsToCollectBeforeDelay;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        SetRandomItemsToCollect();
     }
 
     void Update()
     {
-        FindAndMoveTowardsItem();
+        if (!isCollecting)
+        {
+            FindAndMoveTowardsItem();
+        }
         FlipSprite();
     }
 
@@ -64,8 +72,18 @@ public class AIController : MonoBehaviour
             }
             else
             {
-                // Stop moving when directly underneath the item
+                // Stop moving when directly underneath the item and increment the count
                 rb.velocity = new Vector2(0, rb.velocity.y);
+                itemsCollected++;
+                
+                if (itemsCollected >= itemsToCollectBeforeDelay)
+                {
+                    StartCoroutine(CollectItem());
+                }
+                else
+                {
+                    targetItem = null; // Reset the target to look for the next item
+                }
             }
         }
         else
@@ -73,6 +91,29 @@ public class AIController : MonoBehaviour
             // No item found, stop moving
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
+    }
+
+    IEnumerator CollectItem()
+    {
+        // Set collecting state to true
+        isCollecting = true;
+
+        // Simulate collection delay
+        yield return new WaitForSeconds(collectDelay);
+
+        // Reset target and collecting state after delay
+        targetItem = null;
+        isCollecting = false;
+
+        // Reset the items collected counter and choose a new random number of items to collect before the next delay
+        itemsCollected = 0;
+        SetRandomItemsToCollect();
+    }
+
+    void SetRandomItemsToCollect()
+    {
+        // Set a random number between 1 and 4 for the next items to collect before the AI waits
+        itemsToCollectBeforeDelay = Random.Range(1, 5);
     }
 
     Collider2D FindNearestItem(Collider2D[] items)

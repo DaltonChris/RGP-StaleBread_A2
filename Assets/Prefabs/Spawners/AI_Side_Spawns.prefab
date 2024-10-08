@@ -219,11 +219,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 382210a3c07bfe04790dab0deda76a42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemPrefab1: {fileID: 7093964287867381596, guid: 8c3eafb6c380074449a0ca5c79c148c6, type: 3}
-  itemPrefab2: {fileID: 201539441245615257, guid: 530fbca75ecb0cf43bbf11689aae1346, type: 3}
+  itemPrefabs:
+  - {fileID: 7093964287867381596, guid: 8c3eafb6c380074449a0ca5c79c148c6, type: 3}
+  - {fileID: 201539441245615257, guid: 530fbca75ecb0cf43bbf11689aae1346, type: 3}
+  itemSpawnProbabilities:
+  - 0.1
+  - 0.5
   spawnIntervalMin: 0.5
   spawnIntervalMax: 2
-  item2SpawnProbability: 0.2
 --- !u!1 &4168185631027464020
 GameObject:
   m_ObjectHideFlags: 0

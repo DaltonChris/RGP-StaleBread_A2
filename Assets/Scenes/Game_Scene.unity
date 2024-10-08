@@ -179,6 +179,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &302474083 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 824014773562806302, guid: 6749e95438f527b48ac3561fae14e023, type: 3}
+  m_PrefabInstance: {fileID: 7555494795318079555}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &555418649
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,6 +423,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &1121739361 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 5967506693928338894, guid: ded0f97be1a3e1242a0730c42606c709, type: 3}
+  m_PrefabInstance: {fileID: 1867418048177656085}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &479923023007281925
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -868,11 +878,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8249073368913126349, guid: 0d61e062b60edf1468ac09cad36622ff, type: 3}
       propertyPath: spawnIntervalMax
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8249073368913126349, guid: 0d61e062b60edf1468ac09cad36622ff, type: 3}
       propertyPath: spawnIntervalMin
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8388154769688942591, guid: 0d61e062b60edf1468ac09cad36622ff, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1043,6 +1053,18 @@ PrefabInstance:
     - target: {fileID: 824014773562806302, guid: 6749e95438f527b48ac3561fae14e023, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.417
+      objectReference: {fileID: 0}
+    - target: {fileID: 3873182219808148477, guid: 6749e95438f527b48ac3561fae14e023, type: 3}
+      propertyPath: basket
+      value: 
+      objectReference: {fileID: 302474083}
+    - target: {fileID: 3873182219808148477, guid: 6749e95438f527b48ac3561fae14e023, type: 3}
+      propertyPath: platformArea
+      value: 
+      objectReference: {fileID: 1121739361}
+    - target: {fileID: 3873182219808148477, guid: 6749e95438f527b48ac3561fae14e023, type: 3}
+      propertyPath: itemLayer.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 5234840994624651830, guid: 6749e95438f527b48ac3561fae14e023, type: 3}
       propertyPath: m_Name

@@ -11,10 +11,9 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI playerScoreText;
     public TextMeshProUGUI aiScoreText;
 
-    // Set the points for each item type in the inspector
     [Header("Item Scores")]
-    public int item1Score = 1;
-    public int item2Score = 2;
+    public List<string> itemTags; // List of item tags
+    public List<int> itemScores; // Corresponding scores for each item tag
 
     private int playerScore = 0;
     private int aiScore = 0;
@@ -31,12 +30,10 @@ public class ScoreManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        // Updates the UI on awake so it displays the scores and not "NewText"
         UpdatePlayerScoreUI();
         UpdateAIScoreUI();
     }
 
-    // Adds the score to the UI.
     public void AddScore(int score, bool isPlayer)
     {
         if (isPlayer)
@@ -53,14 +50,11 @@ public class ScoreManager : MonoBehaviour
 
     public int GetScoreForItem(string itemTag)
     {
-        // Return the score value based on the item tag
-        if (itemTag == "Item1")
+        // Find the index of the item tag in the list
+        int index = itemTags.IndexOf(itemTag);
+        if (index != -1 && index < itemScores.Count)
         {
-            return item1Score;
-        }
-        else if (itemTag == "Item2")
-        {
-            return item2Score;
+            return itemScores[index];
         }
 
         // If no matching tag is found, return 0

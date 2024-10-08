@@ -46,5 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerScoreText: {fileID: 0}
   aiScoreText: {fileID: 0}
-  item1Score: 1
-  item2Score: 2
+  itemTags:
+  - Item1
+  - Item2
+  itemScores: 0100000002000000

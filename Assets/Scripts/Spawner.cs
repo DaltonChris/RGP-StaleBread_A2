@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject itemPrefab1; // The first item to spawn
-    public GameObject itemPrefab2; // The second item to spawn with a lower chance
+   public List<GameObject> itemPrefabs; // List to hold multiple item prefabs
+    public List<float> itemSpawnProbabilities; // Corresponding spawn probabilities for each item
     public float spawnIntervalMin = 2f;
     public float spawnIntervalMax = 5f;
-    public float item2SpawnProbability = 0.2f; // Probability (0.0 to 1.0) for item 2 to spawn
 
     private Transform[] spawnPoints; // Array to hold spawn point transforms
     private float spawnTimer;
@@ -45,10 +44,45 @@ public class Spawner : MonoBehaviour
         int randomIndex = Random.Range(0, spawnPoints.Length);
         Transform spawnPoint = spawnPoints[randomIndex];
 
-        // Decide which item to spawn based on probability
-        GameObject itemToSpawn = Random.value < item2SpawnProbability ? itemPrefab2 : itemPrefab1;
+        // Choose an item to spawn based on probabilities
+        GameObject itemToSpawn = GetRandomItem();
 
-        // Instantiate the chosen item at the spawn point's position
-        Instantiate(itemToSpawn, spawnPoint.position, Quaternion.identity);
+        if (itemToSpawn != null)
+        {
+            // Instantiate the chosen item at the spawn point's position
+            Instantiate(itemToSpawn, spawnPoint.position, Quaternion.identity);
+        }
+    }
+
+    GameObject GetRandomItem()
+    {
+        // Make sure the lists are valid
+        if (itemPrefabs.Count == 0 || itemPrefabs.Count != itemSpawnProbabilities.Count)
+        {
+            Debug.LogError("Item prefabs and probabilities lists must have the same number of entries.");
+            return null;
+        }
+
+        // Generate a random value between 0 and the sum of probabilities
+        float totalProbability = 0f;
+        foreach (float probability in itemSpawnProbabilities)
+        {
+            totalProbability += probability;
+        }
+
+        float randomValue = Random.Range(0f, totalProbability);
+        float cumulativeProbability = 0f;
+
+        // Find the item corresponding to the random value
+        for (int i = 0; i < itemPrefabs.Count; i++)
+        {
+            cumulativeProbability += itemSpawnProbabilities[i];
+            if (randomValue <= cumulativeProbability)
+            {
+                return itemPrefabs[i];
+            }
+        }
+
+        return null;
     }
 }

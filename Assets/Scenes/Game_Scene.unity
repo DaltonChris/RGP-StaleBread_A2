@@ -430,6 +430,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6438835483776549125, guid: a0a5113974311d74d884a9d1f74c0f23, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6438835483776549125, guid: a0a5113974311d74d884a9d1f74c0f23, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9056064456922485182, guid: a0a5113974311d74d884a9d1f74c0f23, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -629,32 +637,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1199311687504297657, guid: 11dd8aabe790f144aaa4bd9a7b2e4697, type: 3}
-      propertyPath: m_Mass
-      value: 0.4096
-      objectReference: {fileID: 0}
-    - target: {fileID: 1199311687504297657, guid: 11dd8aabe790f144aaa4bd9a7b2e4697, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1199311687504297657, guid: 11dd8aabe790f144aaa4bd9a7b2e4697, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: d02b4586846476340aff94e2b4946a69, type: 2}
-    - target: {fileID: 1199311687504297657, guid: 11dd8aabe790f144aaa4bd9a7b2e4697, type: 3}
-      propertyPath: m_UseAutoMass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1199311687504297657, guid: 11dd8aabe790f144aaa4bd9a7b2e4697, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
+      propertyPath: m_Interpolate
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2014768528101203923, guid: 11dd8aabe790f144aaa4bd9a7b2e4697, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5584325272832977156, guid: 11dd8aabe790f144aaa4bd9a7b2e4697, type: 3}
-      propertyPath: m_FlipX
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -787,10 +775,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerGround
       objectReference: {fileID: 0}
-    - target: {fileID: 6943628072219798936, guid: 42b19fabc351e1d4b84eabe77a20c8b7, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: d02b4586846476340aff94e2b4946a69, type: 2}
     - target: {fileID: 8231046186470535792, guid: 42b19fabc351e1d4b84eabe77a20c8b7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.5

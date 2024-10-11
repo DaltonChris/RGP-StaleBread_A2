@@ -70,4 +70,15 @@ public class ScoreManager : MonoBehaviour
     {
         aiScoreText.text = "AI Score: " + aiScore;
     }
+
+    public int GetPlayerScore()
+    {
+        return playerScore;
+    }
+
+    public int GetAIScore()
+    {
+        return aiScore;
+    }
+
 }

@@ -105,7 +105,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -306,6 +306,8 @@ MonoBehaviour:
   - Item1
   - Item2
   isPlayerBasket: 1
+  spriteRenderer: {fileID: 0}
+  basketSprites: []
 --- !u!1 &8685246593546472407
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Basket : MonoBehaviour
 {
-    public List<string> itemTags; // List of tags for items this basket can collect
     public bool isPlayerBasket; // Set this in the inspector to identify if it's the player's basket
     public SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
     public List<Sprite> basketSprites; // A list of sprites to swap out as the score increases
@@ -20,34 +19,54 @@ public class Basket : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other)
+{
+    // Check if the item matches any score item tag in the ScoreManager
+    int score = ScoreManager.Instance.GetScoreForItem(other.tag);
+
+    if (score > 0)
     {
-        // Check if the item matches any of the tags in the list
-        for (int i = 0; i < itemTags.Count; i++)
+        // If score is set, update the score based on whether it's the player's or AI's basket
+        if (isPlayerBasket)
         {
-            if (other.CompareTag(itemTags[i]))
+            ScoreManager.Instance.AddScore(score, true);
+            UpdateBasketSprite(ScoreManager.Instance.GetPlayerScore());
+        }
+        else
+        {
+            ScoreManager.Instance.AddScore(score, false);
+            UpdateBasketSprite(ScoreManager.Instance.GetAIScore());
+        }
+
+        Destroy(other.gameObject);
+        return; // Exit after finding a matching item
+    }
+
+    // Check if the item matches any obstacle tag in the ScoreManager
+    float stunDuration = ScoreManager.Instance.GetStunDurationForObstacle(other.tag);
+
+    if (stunDuration > 0)
+    {
+        // Apply stun based on whether it's the player's or AI's basket
+        if (isPlayerBasket)
+        {
+            PlayerController player = GetComponentInParent<PlayerController>();
+            if (player != null)
             {
-                int score = ScoreManager.Instance.GetScoreForItem(itemTags[i]);
-
-                // If score is set, update the score based on whether it's the player's or AI's basket
-                if (score > 0)
-                {
-                    if (isPlayerBasket)
-                    {
-                        ScoreManager.Instance.AddScore(score, true);
-                        UpdateBasketSprite(ScoreManager.Instance.GetPlayerScore());
-                    }
-                    else
-                    {
-                        ScoreManager.Instance.AddScore(score, false);
-                        UpdateBasketSprite(ScoreManager.Instance.GetAIScore());
-                    }
-
-                    Destroy(other.gameObject);
-                }
-                return; // Exit after finding a matching item
+                player.StunPlayer(stunDuration);
             }
         }
+        else
+        {
+            AIController ai = GetComponentInParent<AIController>();
+            if (ai != null)
+            {
+                ai.StunAI(stunDuration);
+            }
+        }
+
+        Destroy(other.gameObject);
     }
+}
 
     // This function checks the score and updates the sprite if a threshold is reached
     private void UpdateBasketSprite(int currentScore)

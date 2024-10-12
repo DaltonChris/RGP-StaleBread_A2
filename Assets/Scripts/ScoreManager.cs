@@ -15,6 +15,10 @@ public class ScoreManager : MonoBehaviour
     public List<string> itemTags; // List of item tags
     public List<int> itemScores; // Corresponding scores for each item tag
 
+    [Header("Obstacle Stun Durations")]
+    public List<string> obstacleTags; // List of obstacle tags
+    public List<float> obstacleStunDurations; // Corresponding stun durations for each obstacle
+
     private int playerScore = 0;
     private int aiScore = 0;
 
@@ -58,6 +62,16 @@ public class ScoreManager : MonoBehaviour
         }
 
         // If no matching tag is found, return 0
+        return 0;
+    }
+
+    public float GetStunDurationForObstacle(string obstacleTag)
+    {
+        int index = obstacleTags.IndexOf(obstacleTag);
+        if (index != -1 && index < obstacleStunDurations.Count)
+        {
+            return obstacleStunDurations[index];
+        }
         return 0;
     }
 

@@ -9,6 +9,7 @@ TagManager:
   - Item
   - Item1
   - Item2
+  - Obstacle
   layers:
   - Default
   - TransparentFX

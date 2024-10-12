@@ -19,6 +19,7 @@ public class AIController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Collider2D targetItem;
     private bool isCollecting = false;
+    private bool isStunned = false;
     private int itemsCollected = 0;
     private int itemsToCollectBeforeDelay;
 
@@ -31,7 +32,7 @@ public class AIController : MonoBehaviour
 
     void Update()
     {
-        if (!isCollecting)
+        if (!isCollecting && !isStunned)
         {
             FindAndMoveTowardsItem();
         }
@@ -40,15 +41,29 @@ public class AIController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Check for ground beneath the left and right ground checks
-        bool isGroundedLeft = Physics2D.Raycast(leftGroundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
-        bool isGroundedRight = Physics2D.Raycast(rightGroundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
-
-        // Restrict movement if there's no ground in the direction the AI is moving
-        if ((rb.velocity.x < 0 && !isGroundedLeft) || (rb.velocity.x > 0 && !isGroundedRight))
+        if (!isStunned)
         {
-            rb.velocity = new Vector2(0, rb.velocity.y);
+            bool isGroundedLeft = Physics2D.Raycast(leftGroundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
+            bool isGroundedRight = Physics2D.Raycast(rightGroundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
+
+            if ((rb.velocity.x < 0 && !isGroundedLeft) || (rb.velocity.x > 0 && !isGroundedRight))
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            }
         }
+    }
+
+     public void StunAI(float duration)
+    {
+        StartCoroutine(StunCoroutine(duration));
+    }
+
+    private IEnumerator StunCoroutine(float duration)
+    {
+        isStunned = true;
+        rb.velocity = new Vector2(0, rb.velocity.y); // Stop AI movement while stunned
+        yield return new WaitForSeconds(duration);
+        isStunned = false;
     }
 
     void FindAndMoveTowardsItem()

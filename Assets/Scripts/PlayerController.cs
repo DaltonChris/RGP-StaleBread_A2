@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+   public float moveSpeed = 5f;
     public LayerMask groundLayer;
     public Transform leftGroundCheck;
     public Transform rightGroundCheck;
@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private float moveInput;
     private SpriteRenderer spriteRenderer;
+    private bool isStunned = false;
 
     void Start()
     {
@@ -22,26 +23,45 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        moveInput = Input.GetAxis("Horizontal");
-        FlipSprite();
+        if (!isStunned)
+        {
+            moveInput = Input.GetAxis("Horizontal");
+            FlipSprite();
+        }
     }
 
     void FixedUpdate()
     {
-        // Check for ground beneath the left and right ground checks
-        bool isGroundedLeft = Physics2D.Raycast(leftGroundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
-        bool isGroundedRight = Physics2D.Raycast(rightGroundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
+        if (!isStunned)
+        {
+            // Check for ground beneath the left and right ground checks
+            bool isGroundedLeft = Physics2D.Raycast(leftGroundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
+            bool isGroundedRight = Physics2D.Raycast(rightGroundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
 
-        // Determine if movement is allowed based on ground detection and input direction
-        if ((moveInput < 0 && isGroundedLeft) || (moveInput > 0 && isGroundedRight) || moveInput == 0)
-        {
-            rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+            // Determine if movement is allowed based on ground detection and input direction
+            if ((moveInput < 0 && isGroundedLeft) || (moveInput > 0 && isGroundedRight) || moveInput == 0)
+            {
+                rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+            }
+            else
+            {
+                // Keep velocity on the y-axis but stop horizontal movement if there's no ground in the direction
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            }
         }
-        else
-        {
-            // Keep velocity on the y-axis but stop horizontal movement if there's no ground in the direction
-            rb.velocity = new Vector2(0, rb.velocity.y);
-        }
+    }
+
+    public void StunPlayer(float duration)
+    {
+        StartCoroutine(StunCoroutine(duration));
+    }
+
+    private IEnumerator StunCoroutine(float duration)
+    {
+        isStunned = true;
+        rb.velocity = new Vector2(0, rb.velocity.y); // Stop player movement while stunned
+        yield return new WaitForSeconds(duration);
+        isStunned = false;
     }
 
     void FlipSprite()
@@ -55,20 +75,5 @@ public class PlayerController : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
-    }
-
-    void OnDrawGizmos()
-    {
-        // Visualize the ground check rays in the scene view
-        bool isGroundedLeft = Physics2D.Raycast(leftGroundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
-        bool isGroundedRight = Physics2D.Raycast(rightGroundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
-
-        // Draw the left ray
-        Gizmos.color = isGroundedLeft ? Color.green : Color.red;
-        Gizmos.DrawLine(leftGroundCheck.position, leftGroundCheck.position + Vector3.down * groundCheckDistance);
-
-        // Draw the right ray
-        Gizmos.color = isGroundedRight ? Color.green : Color.red;
-        Gizmos.DrawLine(rightGroundCheck.position, rightGroundCheck.position + Vector3.down * groundCheckDistance);
     }
 }

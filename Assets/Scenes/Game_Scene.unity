@@ -560,6 +560,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1251323669341979114, guid: a57d9de0a6cd726428fa6065632872c5, type: 3}
+      propertyPath: itemPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1251323669341979114, guid: a57d9de0a6cd726428fa6065632872c5, type: 3}
+      propertyPath: itemPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 420796717022221863, guid: 25285d0c24acad84b9b9a94d319cd3e1, type: 3}
+    - target: {fileID: 1251323669341979114, guid: a57d9de0a6cd726428fa6065632872c5, type: 3}
+      propertyPath: itemSpawnProbabilities.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1251323669341979114, guid: a57d9de0a6cd726428fa6065632872c5, type: 3}
+      propertyPath: itemSpawnProbabilities.Array.data[2]
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 2312782183631389049, guid: a57d9de0a6cd726428fa6065632872c5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.25
@@ -730,6 +746,22 @@ PrefabInstance:
       propertyPath: playerScoreText
       value: 
       objectReference: {fileID: 1113916794}
+    - target: {fileID: 3968725338069942472, guid: 6326f474be9e687458fb40e592f8a74f, type: 3}
+      propertyPath: obstacleTags.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968725338069942472, guid: 6326f474be9e687458fb40e592f8a74f, type: 3}
+      propertyPath: obstacleTags.Array.data[0]
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968725338069942472, guid: 6326f474be9e687458fb40e592f8a74f, type: 3}
+      propertyPath: obstacleStunDurations.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968725338069942472, guid: 6326f474be9e687458fb40e592f8a74f, type: 3}
+      propertyPath: obstacleStunDurations.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4141132001172360958, guid: 6326f474be9e687458fb40e592f8a74f, type: 3}
       propertyPath: m_Name
       value: ScoreManager
@@ -909,11 +941,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6956886222985224809, guid: 11dd8aabe790f144aaa4bd9a7b2e4697, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.64
+      value: 0.36571428
       objectReference: {fileID: 0}
     - target: {fileID: 6956886222985224809, guid: 11dd8aabe790f144aaa4bd9a7b2e4697, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.64
+      value: 0.36571428
       objectReference: {fileID: 0}
     - target: {fileID: 6956886222985224809, guid: 11dd8aabe790f144aaa4bd9a7b2e4697, type: 3}
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
@@ -954,6 +986,22 @@ PrefabInstance:
     - target: {fileID: 2794908954197952146, guid: 0d61e062b60edf1468ac09cad36622ff, type: 3}
       propertyPath: m_Name
       value: AI_Side_Spawns
+      objectReference: {fileID: 0}
+    - target: {fileID: 8249073368913126349, guid: 0d61e062b60edf1468ac09cad36622ff, type: 3}
+      propertyPath: itemPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8249073368913126349, guid: 0d61e062b60edf1468ac09cad36622ff, type: 3}
+      propertyPath: itemPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 420796717022221863, guid: 25285d0c24acad84b9b9a94d319cd3e1, type: 3}
+    - target: {fileID: 8249073368913126349, guid: 0d61e062b60edf1468ac09cad36622ff, type: 3}
+      propertyPath: itemSpawnProbabilities.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8249073368913126349, guid: 0d61e062b60edf1468ac09cad36622ff, type: 3}
+      propertyPath: itemSpawnProbabilities.Array.data[2]
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8388154769688942591, guid: 0d61e062b60edf1468ac09cad36622ff, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1195,11 +1243,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7588327909864913141, guid: 6749e95438f527b48ac3561fae14e023, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.64
+      value: 0.36571428
       objectReference: {fileID: 0}
     - target: {fileID: 7588327909864913141, guid: 6749e95438f527b48ac3561fae14e023, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.64
+      value: 0.36571428
       objectReference: {fileID: 0}
     - target: {fileID: 8239689973288427114, guid: 6749e95438f527b48ac3561fae14e023, type: 3}
       propertyPath: itemTags.Array.size

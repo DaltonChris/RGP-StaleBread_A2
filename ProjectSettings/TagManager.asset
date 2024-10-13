@@ -10,6 +10,7 @@ TagManager:
   - Item1
   - Item2
   - Obstacle
+  - Cloud
   layers:
   - Default
   - TransparentFX
@@ -44,6 +45,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackBackground
+    uniqueID: 918114897
+    locked: 0
   - name: Background
     uniqueID: 4151513355
     locked: 0

@@ -9,7 +9,7 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI TimerText;
     public TextMeshProUGUI WinnerText;
     float RunTime;
-    float TimeLimit = 3.33f;
+    float TimeLimit = 33.33f;
     public Canvas GameOverCanvas;
     public ScoreManager ScoreManager;
 
@@ -30,8 +30,12 @@ public class Timer : MonoBehaviour
             TimerText.text = "GameOver"; // Display game over message
             GameOverCanvas.enabled = true; // Enable the GameOver canvas
             Time.timeScale = 0.1f;
-            string winnerStr =
-            WinnerText.text = "Winner: ";
+            WinnerText.text = (ScoreManager.GetPlayerScore() > ScoreManager.GetAIScore())
+                    ? "Winner: Player"
+                    : (ScoreManager.GetPlayerScore() == ScoreManager.GetAIScore()
+                        ? "It's a Tie!"
+                        : "Winner: AI");
+
         }
         else
         {

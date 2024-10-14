@@ -7,27 +7,37 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     public TextMeshProUGUI TimerText;
+    public TextMeshProUGUI WinnerText;
     float RunTime;
-    public float TimeLimit;
+    float TimeLimit = 3.33f;
+    public Canvas GameOverCanvas;
+    public ScoreManager ScoreManager;
 
     // Start is called before the first frame update
     void Start()
     {
         RunTime = TimeLimit;
-        TimerText.text = "Time Left: " + RunTime.ToString("F2"); ;
+        TimerText.text = "Time Left: " + RunTime.ToString("F2");
+        GameOverCanvas.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (RunTime < 0)
+        if (RunTime <= 0) 
         {
-            TimerText.text = "GameOver";
+            RunTime = 0;
+            TimerText.text = "GameOver"; // Display game over message
+            GameOverCanvas.enabled = true; // Enable the GameOver canvas
+            Time.timeScale = 0.1f;
+            string winnerStr =
+            WinnerText.text = "Winner: ";
         }
         else
         {
             RunTime -= Time.deltaTime;
             TimerText.text = "Time Left: " + RunTime.ToString("F2"); ;
+
         }
     }
 }

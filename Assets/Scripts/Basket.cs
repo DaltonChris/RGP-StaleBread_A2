@@ -13,6 +13,10 @@ public class Basket : MonoBehaviour
     private int[] scoreThresholds = { 5, 10, 20, 28 }; // Score thresholds for updating the sprite
     private int currentSpriteIndex = 0;
 
+    public AudioClip[] CaughtBreadSFX;
+    public AudioClip GotStunnedSFX;
+    public AudioSource audioSource;
+
     Color currentColor;
     Color StunColor = Color.red;
     Color CollectColor = Color.green;
@@ -45,6 +49,11 @@ public class Basket : MonoBehaviour
             {
                 ScoreManager.Instance.AddScore(score, true);
                 UpdateBasketSprite(ScoreManager.Instance.GetPlayerScore());
+
+                //Choose a random sound from the array and play it
+                int randSFX = Random.Range(0, CaughtBreadSFX.Length);
+                SfxManager.Instance.PlaySfx(CaughtBreadSFX[randSFX]);
+
                 StartCoroutine(FlashColour(CollectColor));
             }
             else
@@ -71,6 +80,7 @@ public class Basket : MonoBehaviour
                 {
                     player.StunPlayer(stunDuration);
                 }
+                SfxManager.Instance.PlaySfx(GotStunnedSFX);
                 StartCoroutine(FlashColour(StunColor));
             }
             else

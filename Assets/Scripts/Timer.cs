@@ -13,6 +13,11 @@ public class Timer : MonoBehaviour
     public Canvas GameOverCanvas;
     public ScoreManager ScoreManager;
 
+    public AudioClip GameStart;
+    public AudioClip YouLose;
+    public AudioClip YouWin;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +51,8 @@ public class Timer : MonoBehaviour
             //Running out of time vfx
             if(RunTime <= 5.1f)
             {
+                //TODO: tell GameMusic script (tba) to play 'time almost out' music
+
                 TimerText.color = new Color(1.0f, 0.25f, 0.25f, 1.0f);
                 TimerText.fontSize += 0.005f;
             }

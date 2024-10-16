@@ -68,7 +68,6 @@ public class CharacterAnimation : MonoBehaviour
 
     public void FillBasket(int basketIndex)
     {
-        print(basketIndex);
         breadSprites[basketIndex].SetActive(true);
     }
 }

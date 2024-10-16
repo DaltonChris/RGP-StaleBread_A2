@@ -16,6 +16,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1f;
         RunTime = TimeLimit;
         TimerText.text = "Time Left: " + RunTime.ToString("F2");
         GameOverCanvas.enabled = false;

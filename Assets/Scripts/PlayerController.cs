@@ -12,13 +12,13 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private float moveInput;
-    private SpriteRenderer spriteRenderer;
+    private CharacterAnimation playerAnim;
     private bool isStunned = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        playerAnim = GetComponent<CharacterAnimation>();
     }
 
     void Update()
@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
         if (!isStunned)
         {
             moveInput = Input.GetAxis("Horizontal");
-            FlipSprite();
+            playerAnim.FlipSprite(moveInput);
         }
     }
 
@@ -48,6 +48,15 @@ public class PlayerController : MonoBehaviour
                 // Keep velocity on the y-axis but stop horizontal movement if there's no ground in the direction
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }
+
+            if (moveInput != 0)
+            {
+                playerAnim.ChangeAnimation(CharacterAnimation.AnimationState.RUN);
+            }
+            else
+            {
+                playerAnim.ChangeAnimation(CharacterAnimation.AnimationState.IDLE);
+            }
         }
     }
 
@@ -59,12 +68,16 @@ public class PlayerController : MonoBehaviour
     private IEnumerator StunCoroutine(float duration)
     {
         isStunned = true;
+        playerAnim.ChangeAnimation(CharacterAnimation.AnimationState.STUNNED);
         rb.velocity = new Vector2(0, rb.velocity.y); // Stop player movement while stunned
         yield return new WaitForSeconds(duration);
         isStunned = false;
+        playerAnim.ChangeAnimation(CharacterAnimation.AnimationState.IDLE);
     }
 
-    void FlipSprite()
+
+    //DEPRECIATED: FlipSprite is now a function on the CharacterAnimation script, due to the need to flip 6 sprites at once
+/*     void FlipSprite()
     {
         // Flip the sprite based on the movement direction
         if (moveInput < 0)
@@ -75,5 +88,5 @@ public class PlayerController : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
-    }
+    } */
 }

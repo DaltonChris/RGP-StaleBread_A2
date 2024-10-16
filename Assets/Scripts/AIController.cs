@@ -16,7 +16,7 @@ public class AIController : MonoBehaviour
     public float collectDelay = 2f; // Base delay time when AI decides to wait before collecting more items
 
     private Rigidbody2D rb;
-    private SpriteRenderer spriteRenderer;
+    private CharacterAnimation aiAnim;
     private Collider2D targetItem;
     private bool isCollecting = false;
     private bool isStunned = false;
@@ -26,7 +26,7 @@ public class AIController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        aiAnim = GetComponent<CharacterAnimation>();
         SetRandomItemsToCollect();
     }
 
@@ -36,7 +36,6 @@ public class AIController : MonoBehaviour
         {
             FindAndMoveTowardsItem();
         }
-        FlipSprite();
     }
 
     void FixedUpdate()
@@ -53,7 +52,7 @@ public class AIController : MonoBehaviour
         }
     }
 
-     public void StunAI(float duration)
+    public void StunAI(float duration)
     {
         StartCoroutine(StunCoroutine(duration));
     }
@@ -61,9 +60,11 @@ public class AIController : MonoBehaviour
     private IEnumerator StunCoroutine(float duration)
     {
         isStunned = true;
+        aiAnim.ChangeAnimation(CharacterAnimation.AnimationState.STUNNED);
         rb.velocity = new Vector2(0, rb.velocity.y); // Stop AI movement while stunned
         yield return new WaitForSeconds(duration);
         isStunned = false;
+        aiAnim.ChangeAnimation(CharacterAnimation.AnimationState.IDLE);
     }
 
     void FindAndMoveTowardsItem()
@@ -84,11 +85,14 @@ public class AIController : MonoBehaviour
             {
                 float direction = Mathf.Sign(targetItem.transform.position.x - basket.position.x);
                 rb.velocity = new Vector2(direction * moveSpeed, rb.velocity.y);
+                aiAnim.FlipSprite(direction);
+                aiAnim.ChangeAnimation(CharacterAnimation.AnimationState.RUN);
             }
             else
             {
                 // Stop moving when directly underneath the item and increment the count
                 rb.velocity = new Vector2(0, rb.velocity.y);
+                aiAnim.ChangeAnimation(CharacterAnimation.AnimationState.IDLE);
                 itemsCollected++;
                 
                 if (itemsCollected >= itemsToCollectBeforeDelay)
@@ -105,6 +109,7 @@ public class AIController : MonoBehaviour
         {
             // No item found, stop moving
             rb.velocity = new Vector2(0, rb.velocity.y);
+            aiAnim.ChangeAnimation(CharacterAnimation.AnimationState.IDLE);
         }
     }
 
@@ -153,7 +158,8 @@ public class AIController : MonoBehaviour
         return nearest;
     }
 
-    void FlipSprite()
+    //DEPRECIATED: Sprites are now flipped on CharacterAnimation script
+/*     void FlipSprite()
     {
         // Flip the sprite based on the movement direction
         if (rb.velocity.x < 0)
@@ -164,7 +170,7 @@ public class AIController : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
-    }
+    } */
 
     void OnDrawGizmos()
     {

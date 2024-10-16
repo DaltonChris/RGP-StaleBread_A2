@@ -6,7 +6,10 @@ public class Basket : MonoBehaviour
 {
     public bool isPlayerBasket; // Set this in the inspector to identify if it's the player's basket
     public SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
-    public List<Sprite> basketSprites; // A list of sprites to swap out as the score increases
+    public CharacterAnimation charAnim;
+
+    private int basketSpriteNumber = 4; //the set number of bread sprites to add to the basket
+    //public List<Sprite> basketSprites; // A list of sprites to swap out as the score increases
     private int[] scoreThresholds = { 5, 10, 20, 30 }; // Score thresholds for updating the sprite
     private int currentSpriteIndex = 0;
 
@@ -71,9 +74,9 @@ public class Basket : MonoBehaviour
     // This function checks the score and updates the sprite if a threshold is reached
     private void UpdateBasketSprite(int currentScore)
     {
-        if (currentSpriteIndex < basketSprites.Count && currentScore >= scoreThresholds[currentSpriteIndex])
+        if (currentSpriteIndex < basketSpriteNumber && currentScore >= scoreThresholds[currentSpriteIndex])
         {
-            spriteRenderer.sprite = basketSprites[currentSpriteIndex];
+            charAnim.FillBasket(currentSpriteIndex);
             currentSpriteIndex++; // Move to the next sprite
         }
     }

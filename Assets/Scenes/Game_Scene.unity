@@ -16585,6 +16585,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1199311687504297657, guid: 11dd8aabe790f144aaa4bd9a7b2e4697, type: 3}
+      propertyPath: m_Mass
+      value: 0.70743966
+      objectReference: {fileID: 0}
     - target: {fileID: 2014768528101203923, guid: 11dd8aabe790f144aaa4bd9a7b2e4697, type: 3}
       propertyPath: m_Name
       value: Player
@@ -16832,9 +16836,17 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.8233806
       objectReference: {fileID: 0}
+    - target: {fileID: 5195300110921220812, guid: 6749e95438f527b48ac3561fae14e023, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5234840994624651830, guid: 6749e95438f527b48ac3561fae14e023, type: 3}
       propertyPath: m_Name
       value: AI
+      objectReference: {fileID: 0}
+    - target: {fileID: 6254018279713426154, guid: 6749e95438f527b48ac3561fae14e023, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7588327909864913141, guid: 6749e95438f527b48ac3561fae14e023, type: 3}
       propertyPath: m_Size.x
@@ -16916,7 +16928,10 @@ PrefabInstance:
     - {fileID: 4351239108733231219, guid: 6749e95438f527b48ac3561fae14e023, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5195300110921220812, guid: 6749e95438f527b48ac3561fae14e023, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 6749e95438f527b48ac3561fae14e023, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -422,7 +422,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -1479080824, guid: 1acd425604a4a024e979adbcbe76a779, type: 3}
-  m_Color: {r: 0.6179246, g: 0.860505, b: 1, a: 1}
+  m_Color: {r: 0.10849059, g: 0.7028305, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -693,7 +693,7 @@ MonoBehaviour:
   isPlayerBasket: 1
   spriteRenderer: {fileID: 0}
   charAnim: {fileID: 6966894478400611093}
-  basketSprites: []
+  FlashTime: 0.15
 --- !u!1 &8512426715639235223
 GameObject:
   m_ObjectHideFlags: 0

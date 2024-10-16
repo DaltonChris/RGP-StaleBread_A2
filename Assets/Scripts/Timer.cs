@@ -43,6 +43,13 @@ public class Timer : MonoBehaviour
             RunTime -= Time.deltaTime;
             TimerText.text = "Time Left: " + RunTime.ToString("F2"); ;
 
+            //Running out of time vfx
+            if(RunTime <= 5.1f)
+            {
+                TimerText.color = new Color(1.0f, 0.25f, 0.25f, 1.0f);
+                TimerText.fontSize += 0.005f;
+            }
+
         }
     }
 

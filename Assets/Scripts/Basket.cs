@@ -10,7 +10,7 @@ public class Basket : MonoBehaviour
 
     private int basketSpriteNumber = 4; //the set number of bread sprites to add to the basket
     //public List<Sprite> basketSprites; // A list of sprites to swap out as the score increases
-    private int[] scoreThresholds = { 5, 10, 20, 30 }; // Score thresholds for updating the sprite
+    private int[] scoreThresholds = { 5, 10, 20, 28 }; // Score thresholds for updating the sprite
     private int currentSpriteIndex = 0;
 
     Color currentColor;
@@ -29,6 +29,12 @@ public class Basket : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        //Skip running code if timescale isn't normal, such as when the game has finished
+        if(Time.timeScale != 1f)
+        {
+            return;
+        }
+
         // Check if the item matches any score item tag in the ScoreManager
         int score = ScoreManager.Instance.GetScoreForItem(other.tag);
 

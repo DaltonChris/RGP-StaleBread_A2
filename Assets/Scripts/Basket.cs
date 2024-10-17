@@ -22,6 +22,7 @@ public class Basket : MonoBehaviour
     Color CollectColor = Color.green;
     public float FlashTime = 0.15f;
 
+
     private void Start()
     {
         if (spriteRenderer == null)

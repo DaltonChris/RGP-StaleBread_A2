@@ -15,7 +15,6 @@ public class Basket : MonoBehaviour
 
     public AudioClip[] CaughtBreadSFX;
     public AudioClip GotStunnedSFX;
-    public AudioSource audioSource;
 
     Color currentColor;
     Color StunColor = Color.red;

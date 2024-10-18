@@ -16816,7 +16816,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2240105023528229823, guid: 11dd8aabe790f144aaa4bd9a7b2e4697, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8859712027741268844, guid: 11dd8aabe790f144aaa4bd9a7b2e4697, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -17069,7 +17074,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3131015032094733649, guid: 6749e95438f527b48ac3561fae14e023, type: 3}
       propertyPath: m_Mass
-      value: 0.70743966
+      value: 0.49127746
       objectReference: {fileID: 0}
     - target: {fileID: 3873182219808148477, guid: 6749e95438f527b48ac3561fae14e023, type: 3}
       propertyPath: platformArea

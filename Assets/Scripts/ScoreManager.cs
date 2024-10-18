@@ -104,12 +104,12 @@ public class ScoreManager : MonoBehaviour
 
     private void UpdatePlayerScoreUI()
     {
-        playerScoreText.text = " : " + playerScore;
+        playerScoreText.text = ":" + playerScore;
     }
 
     private void UpdateAIScoreUI()
     {
-        aiScoreText.text = aiScore + " : ";
+        aiScoreText.text = aiScore + ": ";
     }
 
     public int GetPlayerScore()

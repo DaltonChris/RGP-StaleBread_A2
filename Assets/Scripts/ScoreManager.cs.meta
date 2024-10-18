@@ -3,7 +3,11 @@ guid: 521681a6cb266f8418bd431d3b271829
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - playerScoreText: {instanceID: 0}
+  - aiScoreText: {instanceID: 0}
+  - scoreParticlePrefab: {fileID: 8917447993309159138, guid: 6466ddba368fba74fba56b1beaf171e6, type: 3}
+  - particleSpawnLocation: {fileID: 8592856005698850954, guid: a820b593eae52024f81918a7c5c6539a, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

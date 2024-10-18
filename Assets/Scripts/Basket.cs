@@ -16,6 +16,8 @@ public class Basket : MonoBehaviour
     public AudioClip[] CaughtBreadSFX;
     public AudioClip GotStunnedSFX;
 
+    public ParticleSystem scoreParticleEffect;
+
     Color currentColor;
     Color StunColor = Color.red;
     Color CollectColor = Color.green;
@@ -104,8 +106,29 @@ public class Basket : MonoBehaviour
         {
             charAnim.FillBasket(currentSpriteIndex);
             currentSpriteIndex++; // Move to the next sprite
+
+            // this triggers the particle effect
+            PlayScoreParticleEffect();
         }
     }
+
+    private void PlayScoreParticleEffect()
+    {
+        if (scoreParticleEffect != null)
+        {
+            scoreParticleEffect.Play();
+        }
+    }
+
+    public void PlayScoreEffect()
+    {
+        if (scoreParticleEffect != null)
+        {
+            scoreParticleEffect.Play();
+        }
+    }
+
+
 
     IEnumerator FlashColour(Color colourToFlash)
     {

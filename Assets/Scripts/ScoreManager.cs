@@ -22,9 +22,15 @@ public class ScoreManager : MonoBehaviour
     private int playerScore = 0;
     private int aiScore = 0;
 
+    [Header("Particle Effects")]
+    public GameObject scoreParticlePrefab; // particle effect
+
+    [Header("Particle Effect Spawn Locations")]
+    public Transform playerBasketSpawnLocation; // Player particle spawn object
+    public Transform aiBasketSpawnLocation; // AI basket particle spawn objext
+
     private void Awake()
     {
-        // Singleton pattern to access the ScoreManager globally
         if (Instance == null)
         {
             Instance = this;
@@ -44,24 +50,45 @@ public class ScoreManager : MonoBehaviour
         {
             playerScore += score;
             UpdatePlayerScoreUI();
+
+            // Trigger particle effect basket
+            TriggerScoreParticle(true);
         }
         else
         {
             aiScore += score;
             UpdateAIScoreUI();
+
+            // Trigger particle effect basket
+            TriggerScoreParticle(false);
+        }
+    }
+
+    private void TriggerScoreParticle(bool isPlayer)
+    {
+        if (scoreParticlePrefab != null)
+        {
+            // if only plyr scores, trigger particle effect there
+            if (isPlayer && playerBasketSpawnLocation != null)
+            {
+                Instantiate(scoreParticlePrefab, playerBasketSpawnLocation.position, Quaternion.identity);
+            }
+            // If AI scores, trigger particle effect there
+            else if (!isPlayer && aiBasketSpawnLocation != null)
+            {
+                Instantiate(scoreParticlePrefab, aiBasketSpawnLocation.position, Quaternion.identity);
+            }
         }
     }
 
     public int GetScoreForItem(string itemTag)
     {
-        // Find the index of the item tag in the list
         int index = itemTags.IndexOf(itemTag);
         if (index != -1 && index < itemScores.Count)
         {
             return itemScores[index];
         }
 
-        // If no matching tag is found, return 0
         return 0;
     }
 
@@ -94,5 +121,4 @@ public class ScoreManager : MonoBehaviour
     {
         return aiScore;
     }
-
 }

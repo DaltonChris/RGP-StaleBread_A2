@@ -12,6 +12,7 @@ TagManager:
   - Obstacle
   - Cloud
   - SFX
+  - GameMusic
   layers:
   - Default
   - TransparentFX

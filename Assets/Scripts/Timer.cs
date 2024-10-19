@@ -37,26 +37,29 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (RunTime <= 0) 
+        if (RunTime <= 0)
         {
             RunTime = 0;
             TimerText.text = "GameOver"; // Display game over message
             GameOverCanvas.enabled = true; // Enable the GameOver canvas
 
-
+            int playerScore = ScoreManager.GetPlayerScore();
+            int aiScore = ScoreManager.GetAIScore();
+            int pointDifference = Mathf.Abs(playerScore - aiScore);
 
             Time.timeScale = 0.1f;
-            WinnerText.text = (ScoreManager.GetPlayerScore() > ScoreManager.GetAIScore())
-                    ? "Winner: Player"
-                    : (ScoreManager.GetPlayerScore() == ScoreManager.GetAIScore()
-                        ? "It's a Tie!"
-                        : "Winner: AI");
 
+            // Check winner and display point difference
+            WinnerText.text = (playerScore > aiScore)
+                ? $"Winner: Player\nBeat AI by {pointDifference} points"
+                : (playerScore == aiScore
+                    ? "It's a Tie!"
+                    : $"Winner: AI\nBeat Player by {pointDifference} points");
         }
         else
         {
             RunTime -= Time.deltaTime;
-            TimerText.text = "Time Left: " + RunTime.ToString("F2"); ;
+            TimerText.text = "Time Left: \n" + RunTime.ToString("F2"); ;
 
             //Running out of time vfx
             if(RunTime <= 5.1f)

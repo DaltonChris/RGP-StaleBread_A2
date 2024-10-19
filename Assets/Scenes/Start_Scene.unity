@@ -1574,6 +1574,7 @@ GameObject:
   - component: {fileID: 2117070828}
   - component: {fileID: 2117070827}
   - component: {fileID: 2117070830}
+  - component: {fileID: 2117070831}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1707,6 +1708,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69a54324189b238429bc1e4637a36a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &2117070831
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117070825}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e629bbaac1f73794e85359684cce20f4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &977232893509984485
 PrefabInstance:
   m_ObjectHideFlags: 0
